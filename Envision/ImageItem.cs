@@ -6,8 +6,8 @@ namespace Envision
 {
     class ImageItem
     {
-        private string filename;
-        private string filepath;
+        public string filename;
+        public string filepath;
 
         public ImageItem(string filename, string filepath)
         {

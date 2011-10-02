@@ -44,6 +44,7 @@ namespace Envision
             this.exportButton = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.removeButton = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.folderSelectDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
             this.kryptonPanel.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -91,6 +92,7 @@ namespace Envision
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newToolStripMenuItem,
             this.importToolStripMenuItem,
             this.runBatchToolStripMenuItem,
             this.exitToolStripMenuItem});
@@ -138,6 +140,7 @@ namespace Envision
             this.imagePreview.Location = new System.Drawing.Point(328, 27);
             this.imagePreview.Name = "imagePreview";
             this.imagePreview.Size = new System.Drawing.Size(360, 360);
+            this.imagePreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imagePreview.TabIndex = 2;
             this.imagePreview.TabStop = false;
             // 
@@ -172,6 +175,13 @@ namespace Envision
             // folderSelectDialog
             // 
             this.folderSelectDialog.Description = "Please select the folder for the images:";
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Text = "New";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -213,6 +223,7 @@ namespace Envision
         private ComponentFactory.Krypton.Toolkit.KryptonButton exportButton;
         private ComponentFactory.Krypton.Toolkit.KryptonButton importButton;
         private System.Windows.Forms.FolderBrowserDialog folderSelectDialog;
+        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
     }
 }
 
