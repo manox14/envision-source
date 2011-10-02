@@ -33,7 +33,7 @@ namespace Envision
             string path = getFolderPath("Please select a folder containing images:");
             if (path != null)
             {
-                string[] extenstions = { "*.bmp", "*.jpg", "*.jpeg", "*.jfif", "*.png", "*.gif" };
+                string[] extenstions = { "*.jpg", "*.jpeg", "*.jfif", "*.png" };
                 foreach (string ext in extenstions)
                 {
                     string[] filePaths = Directory.GetFiles(path, ext);
@@ -60,6 +60,7 @@ namespace Envision
             if (path != null)
             {
                 MessageBox.Show(path);
+                new BatchSettings().Show(this);
             }
         }
 
