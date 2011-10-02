@@ -44,6 +44,11 @@ namespace Envision
 
         private void imageSize_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (imageSize.Text.Length < 1 && e.KeyChar == '0')
+            {
+                e.Handled = true;
+                return;
+            }
             bool allowFlag = false;
             char[] allowedChars = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '\b' };
             for (int i = 0; i < allowedChars.Length; i++)
