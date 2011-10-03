@@ -7,6 +7,8 @@ using System.Text;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
 using System.Threading;
+using Kaliko.ImageLibrary;
+using System.IO;
 
 namespace Envision
 {
@@ -15,14 +17,16 @@ namespace Envision
         private long avgFileSize;
         private ListBox.ObjectCollection imageList;
         private ProgressBar progBar;
+        private string outFolder;
 
-        public BatchSettings(long avgFileSize, ListBox.ObjectCollection imageList)
+        public BatchSettings(long avgFileSize, ListBox.ObjectCollection imageList, string outFolder)
         {
             InitializeComponent();
             this.imageList = imageList;
             this.unitDimension.SelectedIndex = 0;
             this.avgFileSize = avgFileSize;
             this.approxSize.Text = calcApproxFilesize();
+            this.outFolder = outFolder;
         }
 
         private string calcApproxFilesize()
@@ -138,13 +142,45 @@ namespace Envision
             foreach (ImageItem img in imageList)
             {
                 i++;
-                // TODO: Actually process image here
-                Console.WriteLine(img.filepath);
+                processImage(img);
                 double percent = (double)i / (double)imageList.Count * 100;
                 progBar.SetProgress((int)percent);
                 Thread.Sleep(100);
             }
             progBar.allDone();
+        }
+
+        /// <summary>
+        /// Processes a given image according to the settings provided
+        /// </summary>
+        /// <param name="filepath">Filepath of the image to be processed</param>
+        private void processImage(ImageItem img)
+        {
+            string type = new FileInfo(img.filepath).Extension;
+            string newPath = outFolder + "\\" + img.filename;
+
+            KalikoImage image = new KalikoImage(img.filepath);
+            ImageSize newSize = getNewImageSize(image);
+            KalikoImage workingImg = image.GetThumbnailImage(newSize.Width, newSize.Height, ThumbnailMethod.Fit);
+            
+            // Determine image type and save
+            if (type.Equals(".jpg", StringComparison.OrdinalIgnoreCase) || type.Equals(".jpeg", StringComparison.OrdinalIgnoreCase) || type.Equals(".jfif", StringComparison.OrdinalIgnoreCase))
+                workingImg.SaveJpg(newPath, this.imgQuality.Value);
+            else if (type.Equals(".png", StringComparison.OrdinalIgnoreCase))
+                workingImg.SavePng(newPath, this.imgQuality.Value);
+            else
+                throw new NotSupportedException("Unsupported image type");
+        }
+
+        
+        private ImageSize getNewImageSize(KalikoImage image)
+        {
+            if (this.retainSize.Checked)
+                return new ImageSize(image.Width, image.Height);
+            else
+            {
+                throw new NotImplementedException("Resizing not yet implemented");
+            }
         }
     }
 }

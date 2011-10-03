@@ -82,6 +82,7 @@
       <DependentUpon>BatchSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="ImageItem.cs" />
+    <Compile Include="ImageSize.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>

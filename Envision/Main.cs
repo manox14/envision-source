@@ -49,6 +49,8 @@ namespace Envision
                         else duplicateFlag = true;
                     }
                 }
+                if(imageList.Items.Count > 0)
+                    setExport(true);
                 if (duplicateFlag)
                     MessageBox.Show(this, "Some duplicate images were detected and were not added to the queue.", "Duplicate Images");
             }
@@ -59,7 +61,7 @@ namespace Envision
             string path = getFolderPath("Please select a destination folder for the images:");
             if (path != null)
             {
-                BatchSettings settings = new BatchSettings(calcAvgFileSize(), imageList.Items);
+                BatchSettings settings = new BatchSettings(calcAvgFileSize(), imageList.Items, path);
                 DialogResult result = settings.ShowDialog(this);
                 if (result == DialogResult.OK)
                     resetAndClear();
