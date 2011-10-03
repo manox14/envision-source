@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Envision
 {
-    class ImageItem
+    public class ImageItem
     {
         public string filename;
         public string filepath;

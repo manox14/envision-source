@@ -132,6 +132,7 @@ namespace Envision
             this.executeButton.Size = new System.Drawing.Size(98, 36);
             this.executeButton.TabIndex = 4;
             this.executeButton.Values.Text = "Execute";
+            this.executeButton.Click += new System.EventHandler(this.executeButton_Click);
             // 
             // cancelButton
             // 
@@ -200,28 +201,28 @@ namespace Envision
             // label3
             // 
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label3.Location = new System.Drawing.Point(20, 177);
+            this.label3.Location = new System.Drawing.Point(20, 170);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(133, 18);
+            this.label3.Size = new System.Drawing.Size(111, 39);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Approx. Image Size:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label3.Text = "Approx Filesize:\r\n(based on quality)";
             // 
             // approxSize
             // 
             this.approxSize.BackColor = System.Drawing.Color.Transparent;
-            this.approxSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.approxSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.approxSize.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.approxSize.Location = new System.Drawing.Point(148, 177);
+            this.approxSize.Location = new System.Drawing.Point(126, 166);
             this.approxSize.Name = "approxSize";
-            this.approxSize.Size = new System.Drawing.Size(356, 18);
+            this.approxSize.Size = new System.Drawing.Size(378, 39);
             this.approxSize.TabIndex = 10;
             this.approxSize.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // BatchSettings
             // 
+            this.AcceptButton = this.executeButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;

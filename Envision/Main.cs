@@ -59,8 +59,10 @@ namespace Envision
             string path = getFolderPath("Please select a destination folder for the images:");
             if (path != null)
             {
-                MessageBox.Show(path);
-                new BatchSettings(calcAvgFileSize()).ShowDialog(this);
+                BatchSettings settings = new BatchSettings(calcAvgFileSize(), imageList.Items);
+                DialogResult result = settings.ShowDialog(this);
+                if (result == DialogResult.OK)
+                    resetAndClear();
             }
         }
 
@@ -93,6 +95,7 @@ namespace Envision
             if (imageList.SelectedIndex < imageList.Items.Count && imageList.SelectedIndex >= 0)
             {
                 removeButton.Enabled = true;
+                setExport(true);
                 ImageItem selImg = (ImageItem)imageList.SelectedItem;
                 Bitmap selImgBitmap = new Bitmap(selImg.filepath);
                 imagePreview.Image = selImgBitmap;
@@ -100,8 +103,15 @@ namespace Envision
             else
             {
                 removeButton.Enabled = false;
+                setExport(false);
                 imagePreview.Image = null;
             }
+        }
+
+        private void setExport(bool state)
+        {
+            this.exportButton.Enabled = state;
+            this.runBatchToolStripMenuItem.Enabled = state;
         }
 
         private void removeButton_Click(object sender, EventArgs e)
@@ -137,10 +147,15 @@ namespace Envision
         {
             if (MessageBox.Show(this, "This will clear the queue and start fresh. Continue?", "New - Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                this.imageList.Items.Clear();
-                this.imagePreview.Image = null;
-                this.folderSelectDialog.Reset();
+                resetAndClear();
             }
+        }
+
+        private void resetAndClear()
+        {
+            this.imageList.Items.Clear();
+            this.imagePreview.Image = null;
+            this.folderSelectDialog.Reset();
         }
     }
 }

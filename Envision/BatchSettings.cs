@@ -6,16 +6,20 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
+using System.Threading;
 
 namespace Envision
 {
     public partial class BatchSettings : ComponentFactory.Krypton.Toolkit.KryptonForm
     {
         private long avgFileSize;
+        private ListBox.ObjectCollection imageList;
+        private ProgressBar progBar;
 
-        public BatchSettings(long avgFileSize)
+        public BatchSettings(long avgFileSize, ListBox.ObjectCollection imageList)
         {
             InitializeComponent();
+            this.imageList = imageList;
             this.unitDimension.SelectedIndex = 0;
             this.avgFileSize = avgFileSize;
             this.approxSize.Text = calcApproxFilesize();
@@ -83,12 +87,64 @@ namespace Envision
 
         private void imageSize_Leave(object sender, EventArgs e)
         {
+            validateImgSize();
+        }
+
+        private void validateImgSize()
+        {
             int intParsed;
             if (!int.TryParse(imageSize.Text, out intParsed))
                 imageSize.Text = "1";
-            else if(int.Parse(imageSize.Text) < 1)
+            else if (int.Parse(imageSize.Text) < 1)
                 imageSize.Text = "1";
+        }
 
+        private void executeButton_Click(object sender, EventArgs e)
+        {
+            this.progBar = new ProgressBar();
+            validateImgSize();
+            ThreadStart runBatch = new ThreadStart(executeBatch);
+            Thread batchThread = new Thread(runBatch);
+            batchThread.Start();
+            this.ShowProgressThreadSafe(this);
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+            this.Dispose();
+        }
+
+        // Thread-safe show progress:
+
+        private delegate void ShowProgressCallback(Form parent);
+        public void ShowProgressThreadSafe(Form parent)
+        {
+            if (this.InvokeRequired)
+            {
+                ShowProgressCallback d = new ShowProgressCallback(ShowProgressThreadSafe);
+                this.Invoke(d, new object[] { parent });
+            }
+            else
+            {
+                this.progBar.ShowDialogThreadSafe(parent);
+            }
+        }
+
+        /// <summary>
+        /// Executes the batch operation - should be called from own thread
+        /// </summary>
+        /// <param name="progBar">The progress bar form instance which has been shown</param>
+        private void executeBatch()
+        {
+            int i = 0;
+            foreach (ImageItem img in imageList)
+            {
+                i++;
+                // TODO: Actually process image here
+                Console.WriteLine(img.filepath);
+                double percent = (double)i / (double)imageList.Count * 100;
+                progBar.SetProgress((int)percent);
+                Thread.Sleep(100);
+            }
+            progBar.allDone();
         }
     }
 }
