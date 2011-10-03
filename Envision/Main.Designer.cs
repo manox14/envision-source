@@ -102,6 +102,7 @@ namespace Envision
             // 
             // imagePreview
             // 
+            this.imagePreview.BackColor = System.Drawing.Color.LightSteelBlue;
             this.imagePreview.Location = new System.Drawing.Point(328, 27);
             this.imagePreview.Name = "imagePreview";
             this.imagePreview.Size = new System.Drawing.Size(360, 360);

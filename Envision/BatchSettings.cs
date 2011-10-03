@@ -29,10 +29,15 @@ namespace Envision
             this.outFolder = outFolder;
         }
 
+        /// <summary>
+        /// Calculates the approximate filesize of each  image based on the average filesize and quality setting
+        /// </summary>
+        /// <returns>String representing the approximate filesize</returns>
         private string calcApproxFilesize()
         {
+            const double callibration = 0.0; // Added to the percentage
             double percent = (double)imgQuality.Value / 100.00;
-            long finalSize = (long)(percent * (double)avgFileSize);
+            long finalSize = (long)((percent + callibration) * (double)avgFileSize);
 
             // Display size in bytes
             if (finalSize < 1024)
@@ -179,7 +184,8 @@ namespace Envision
                 return new ImageSize(image.Width, image.Height);
             else
             {
-                throw new NotImplementedException("Resizing not yet implemented");
+                // TODO: Implement resizing & scaling
+                throw new NotImplementedException("Resizing and scaling not yet implemented");
             }
         }
     }
