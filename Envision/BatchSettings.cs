@@ -191,6 +191,7 @@ namespace Envision
             this.ShowProgressThreadSafe(this);
             this.DialogResult = DialogResult.OK;
             this.Close();
+            MessageBox.Show(this.Parent, "The batch operation completed successfully!", "Success");
             this.Dispose();
         }
 
