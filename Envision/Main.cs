@@ -60,8 +60,16 @@ namespace Envision
             if (path != null)
             {
                 MessageBox.Show(path);
-                new BatchSettings().Show(this);
+                new BatchSettings(calcAvgFileSize()).ShowDialog(this);
             }
+        }
+
+        private long calcAvgFileSize()
+        {
+            long totalSize = 0;
+            foreach (ImageItem img in imageList.Items)
+                totalSize += new FileInfo(img.filepath).Length;
+            return totalSize / (long)(imageList.Items.Count + 1);
         }
 
         /// <summary>

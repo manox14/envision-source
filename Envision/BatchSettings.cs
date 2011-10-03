@@ -11,10 +11,32 @@ namespace Envision
 {
     public partial class BatchSettings : ComponentFactory.Krypton.Toolkit.KryptonForm
     {
-        public BatchSettings()
+        private long avgFileSize;
+
+        public BatchSettings(long avgFileSize)
         {
             InitializeComponent();
             this.unitDimension.SelectedIndex = 0;
+            this.avgFileSize = avgFileSize;
+            this.approxSize.Text = calcApproxFilesize();
+        }
+
+        private string calcApproxFilesize()
+        {
+            double percent = (double)imgQuality.Value / 100.00;
+            long finalSize = (long)(percent * (double)avgFileSize);
+
+            // Display size in bytes
+            if (finalSize < 1024)
+                return finalSize.ToString() + " bytes";
+
+            // Display size in kilobytes
+            else if (finalSize < 1048576)
+                return (finalSize / 1024).ToString() + " KB";
+
+            // Display size in megabytes
+            else
+                return String.Format("{0:0.00}", ((double)finalSize / (double)1048576)) + " MB";
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -26,6 +48,7 @@ namespace Envision
         private void imgQuality_ValueChanged(object sender, EventArgs e)
         {
             qualitypercent.Text = imgQuality.Value.ToString() + "%";
+            approxSize.Text = calcApproxFilesize();
         }
 
         private void retainSize_CheckedChanged(object sender, EventArgs e)
