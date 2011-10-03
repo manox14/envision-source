@@ -186,6 +186,7 @@ namespace Envision
             this.folderSelectDialog.Reset();
             setExport(false);
             this.removeButton.Enabled = false;
+            this.importPaths.Clear();
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
