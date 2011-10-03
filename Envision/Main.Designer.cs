@@ -167,8 +167,9 @@ namespace Envision
             // runBatchToolStripMenuItem
             // 
             this.runBatchToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.runBatchToolStripMenuItem.Enabled = false;
             this.runBatchToolStripMenuItem.Name = "runBatchToolStripMenuItem";
-            this.runBatchToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.runBatchToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.runBatchToolStripMenuItem.Text = "Batch Export";
             this.runBatchToolStripMenuItem.Click += new System.EventHandler(this.runBatchToolStripMenuItem_Click);
             // 
