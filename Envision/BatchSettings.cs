@@ -220,7 +220,7 @@ namespace Envision
                 i++;
                 processImage(img);
                 double percent = (double)i / (double)imageList.Count * 100;
-                progBar.SetProgress((int)percent);
+                progBar.SetProgress((int)percent, img.filename);
             }
             progBar.allDone();
         }

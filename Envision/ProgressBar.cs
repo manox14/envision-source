@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
+using Microsoft.WindowsAPICodePack.Taskbar;
 
 namespace Envision
 {
@@ -18,18 +19,22 @@ namespace Envision
 
         // Thread-safe progress bar value-setting:
 
-        private delegate void SetProgressCallback(int percent);
-        public void SetProgress(int percent)
+        private delegate void SetProgressCallback(int percent, string filname);
+        public void SetProgress(int percent, string filename)
         {
             if (this.InvokeRequired)
             {
                 SetProgressCallback d = new SetProgressCallback(SetProgress);
-                this.Invoke(d, new object[] { percent });
+                this.Invoke(d, new object[] { percent, filename });
             }
             else
             {
                 this.progress.Value = percent;
                 this.percentLabel.Text = percent.ToString() + "%";
+                this.filename.Text = filename;
+                if (TaskbarManager.IsPlatformSupported)
+                    TaskbarManager.Instance.SetProgressValue(percent, 100);
+                
             }
         }
 
@@ -63,6 +68,15 @@ namespace Envision
             {
                 this.Close();
                 this.Dispose();
+            }
+        }
+
+        private void ProgressBar_Deactivate(object sender, EventArgs e)
+        {
+            if (TaskbarManager.IsPlatformSupported)
+            {
+                TaskbarManager.Instance.SetProgressValue(0, 100);
+                TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
             }
         }
     }
