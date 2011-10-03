@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Envision")]
-[assembly: AssemblyDescription("Simple application for batch image processing")]
+[assembly: AssemblyDescription("Envision is a simple application for batch image processing. Envision is free and open source. If you paid for this program, you should request a refund.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Envision")]

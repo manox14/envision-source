@@ -158,6 +158,13 @@ namespace Envision
             this.imageList.Items.Clear();
             this.imagePreview.Image = null;
             this.folderSelectDialog.Reset();
+            setExport(false);
+            this.removeButton.Enabled = false;
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new AboutBox().ShowDialog(this);
         }
     }
 }

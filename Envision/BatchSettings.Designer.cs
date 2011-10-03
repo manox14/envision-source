@@ -31,18 +31,18 @@ namespace Envision
             this.components = new System.ComponentModel.Container();
             this.kryptonManager = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.kryptonPanel = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.qualitypercent = new System.Windows.Forms.Label();
-            this.imgQuality = new ComponentFactory.Krypton.Toolkit.KryptonTrackBar();
-            this.label2 = new System.Windows.Forms.Label();
-            this.retainSize = new System.Windows.Forms.CheckBox();
             this.executeButton = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.cancelButton = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.unitDimension = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.imageSize = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.label3 = new System.Windows.Forms.Label();
             this.approxSize = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.retainSize = new System.Windows.Forms.CheckBox();
+            this.qualitypercent = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.imgQuality = new ComponentFactory.Krypton.Toolkit.KryptonTrackBar();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
             this.kryptonPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.unitDimension)).BeginInit();
@@ -66,64 +66,6 @@ namespace Envision
             this.kryptonPanel.Name = "kryptonPanel";
             this.kryptonPanel.Size = new System.Drawing.Size(531, 262);
             this.kryptonPanel.TabIndex = 0;
-            // 
-            // qualitypercent
-            // 
-            this.qualitypercent.BackColor = System.Drawing.Color.Transparent;
-            this.qualitypercent.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.qualitypercent.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.qualitypercent.Location = new System.Drawing.Point(20, 148);
-            this.qualitypercent.Name = "qualitypercent";
-            this.qualitypercent.Size = new System.Drawing.Size(484, 18);
-            this.qualitypercent.TabIndex = 8;
-            this.qualitypercent.Text = "100%";
-            this.qualitypercent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // imgQuality
-            // 
-            this.imgQuality.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.HeaderCalendar;
-            this.imgQuality.DrawBackground = true;
-            this.imgQuality.LargeChange = 10;
-            this.imgQuality.Location = new System.Drawing.Point(23, 118);
-            this.imgQuality.Maximum = 100;
-            this.imgQuality.Minimum = 1;
-            this.imgQuality.Name = "imgQuality";
-            this.imgQuality.Size = new System.Drawing.Size(481, 27);
-            this.imgQuality.SmallChange = 10;
-            this.imgQuality.TabIndex = 7;
-            this.imgQuality.TickFrequency = 10;
-            this.imgQuality.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.imgQuality.TrackBarSize = ComponentFactory.Krypton.Toolkit.PaletteTrackBarSize.Large;
-            this.imgQuality.Value = 100;
-            this.imgQuality.VolumeControl = true;
-            this.imgQuality.ValueChanged += new System.EventHandler(this.imgQuality_ValueChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(12, 92);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(110, 18);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Image Quality";
-            // 
-            // retainSize
-            // 
-            this.retainSize.AutoSize = true;
-            this.retainSize.BackColor = System.Drawing.Color.Transparent;
-            this.retainSize.Checked = true;
-            this.retainSize.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.retainSize.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.retainSize.Location = new System.Drawing.Point(23, 33);
-            this.retainSize.Name = "retainSize";
-            this.retainSize.Size = new System.Drawing.Size(123, 17);
-            this.retainSize.TabIndex = 5;
-            this.retainSize.Text = "Retain Original Sizes";
-            this.retainSize.UseVisualStyleBackColor = false;
-            this.retainSize.CheckedChanged += new System.EventHandler(this.retainSize_CheckedChanged);
             // 
             // executeButton
             // 
@@ -171,18 +113,6 @@ namespace Envision
             this.imageSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.imageSize_KeyPress);
             this.imageSize.Leave += new System.EventHandler(this.imageSize_Leave);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(12, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 18);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Image Size";
-            // 
             // kryptonPanel1
             // 
             this.kryptonPanel1.Controls.Add(this.approxSize);
@@ -198,6 +128,17 @@ namespace Envision
             this.kryptonPanel1.Size = new System.Drawing.Size(525, 214);
             this.kryptonPanel1.TabIndex = 9;
             // 
+            // approxSize
+            // 
+            this.approxSize.BackColor = System.Drawing.Color.Transparent;
+            this.approxSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.approxSize.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.approxSize.Location = new System.Drawing.Point(126, 166);
+            this.approxSize.Name = "approxSize";
+            this.approxSize.Size = new System.Drawing.Size(378, 39);
+            this.approxSize.TabIndex = 10;
+            this.approxSize.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // label3
             // 
             this.label3.BackColor = System.Drawing.Color.Transparent;
@@ -209,16 +150,77 @@ namespace Envision
             this.label3.TabIndex = 9;
             this.label3.Text = "Approx Filesize:\r\n(based on quality)";
             // 
-            // approxSize
+            // retainSize
             // 
-            this.approxSize.BackColor = System.Drawing.Color.Transparent;
-            this.approxSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.approxSize.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.approxSize.Location = new System.Drawing.Point(126, 166);
-            this.approxSize.Name = "approxSize";
-            this.approxSize.Size = new System.Drawing.Size(378, 39);
-            this.approxSize.TabIndex = 10;
-            this.approxSize.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.retainSize.AutoSize = true;
+            this.retainSize.BackColor = System.Drawing.Color.Transparent;
+            this.retainSize.Checked = true;
+            this.retainSize.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.retainSize.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.retainSize.Location = new System.Drawing.Point(23, 33);
+            this.retainSize.Name = "retainSize";
+            this.retainSize.Size = new System.Drawing.Size(123, 17);
+            this.retainSize.TabIndex = 5;
+            this.retainSize.Text = "Retain Original Sizes";
+            this.retainSize.UseVisualStyleBackColor = false;
+            this.retainSize.CheckedChanged += new System.EventHandler(this.retainSize_CheckedChanged);
+            // 
+            // qualitypercent
+            // 
+            this.qualitypercent.BackColor = System.Drawing.Color.Transparent;
+            this.qualitypercent.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.qualitypercent.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.qualitypercent.Location = new System.Drawing.Point(20, 148);
+            this.qualitypercent.Name = "qualitypercent";
+            this.qualitypercent.Size = new System.Drawing.Size(484, 18);
+            this.qualitypercent.TabIndex = 8;
+            this.qualitypercent.Text = "100%";
+            this.qualitypercent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(12, 92);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(110, 18);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Image Quality";
+            // 
+            // imgQuality
+            // 
+            this.imgQuality.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.HeaderCalendar;
+            this.imgQuality.DrawBackground = true;
+            this.imgQuality.LargeChange = 10;
+            this.imgQuality.Location = new System.Drawing.Point(23, 118);
+            this.imgQuality.Maximum = 100;
+            this.imgQuality.Minimum = 1;
+            this.imgQuality.Name = "imgQuality";
+            this.imgQuality.Size = new System.Drawing.Size(481, 27);
+            this.imgQuality.SmallChange = 10;
+            this.imgQuality.TabIndex = 7;
+            this.imgQuality.TickFrequency = 10;
+            this.imgQuality.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.imgQuality.TrackBarSize = ComponentFactory.Krypton.Toolkit.PaletteTrackBarSize.Large;
+            this.imgQuality.Value = 100;
+            this.imgQuality.VolumeControl = true;
+            this.imgQuality.ValueChanged += new System.EventHandler(this.imgQuality_ValueChanged);
+            this.imgQuality.Leave += new System.EventHandler(this.imgQuality_Leave);
+            this.imgQuality.MouseUp += new System.Windows.Forms.MouseEventHandler(this.imgQuality_MouseUp);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(12, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 18);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Image Size";
             // 
             // BatchSettings
             // 
