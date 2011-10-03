@@ -19,6 +19,7 @@ namespace Envision
         private ProgressBar progBar;
         private string outFolder;
         private FileInfo testImg;
+        private int selIndexUnitDim;
 
         public BatchSettings(long avgFileSize, ListBox.ObjectCollection imageList, string outFolder)
         {
@@ -184,8 +185,8 @@ namespace Envision
         {
             this.progBar = new ProgressBar();
             validateImgSize();
-            ThreadStart runBatch = new ThreadStart(executeBatch);
-            Thread batchThread = new Thread(runBatch);
+            Thread batchThread = new Thread(new ThreadStart(executeBatch));
+            this.selIndexUnitDim = unitDimension.SelectedIndex;
             batchThread.Start();
             this.ShowProgressThreadSafe(this);
             this.DialogResult = DialogResult.OK;
@@ -261,8 +262,21 @@ namespace Envision
                 return new ImageSize(image.Width, image.Height);
             else
             {
-                // TODO: Implement resizing & scaling
-                throw new NotImplementedException("Resizing and scaling not yet implemented");
+                double percentage = 100.00;
+
+                // Percent
+                if (selIndexUnitDim == 2)
+                    percentage = double.Parse(this.imageSize.Text) / 100.0;
+
+                // Pixels - width
+                else if (selIndexUnitDim == 0)
+                    percentage = double.Parse(this.imageSize.Text) / (double)image.Width;
+
+                // Pixels - height
+                else if (selIndexUnitDim == 1)
+                    percentage = double.Parse(this.imageSize.Text) / (double)image.Height;
+
+                return new ImageSize((int)((double)image.Width * percentage), (int)((double)image.Height * percentage));
             }
         }
 

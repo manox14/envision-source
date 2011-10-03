@@ -12,7 +12,7 @@ namespace Envision
 {
     public partial class Main : ComponentFactory.Krypton.Toolkit.KryptonForm
     {
-        private List<string> importPaths;
+        private List<string> importPaths = new List<string>();
 
         public Main()
         {

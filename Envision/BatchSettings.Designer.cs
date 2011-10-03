@@ -37,12 +37,12 @@ namespace Envision
             this.imageSize = new System.Windows.Forms.TextBox();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.approxSize = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.retainSize = new System.Windows.Forms.CheckBox();
             this.qualitypercent = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.imgQuality = new ComponentFactory.Krypton.Toolkit.KryptonTrackBar();
             this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
             this.kryptonPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.unitDimension)).BeginInit();
@@ -92,10 +92,9 @@ namespace Envision
             this.unitDimension.DropDownWidth = 121;
             this.unitDimension.Enabled = false;
             this.unitDimension.Items.AddRange(new object[] {
-            "px (height)",
             "px (width)",
-            "% (height)",
-            "% (width)"});
+            "px (height)",
+            "percent"});
             this.unitDimension.Location = new System.Drawing.Point(92, 58);
             this.unitDimension.Name = "unitDimension";
             this.unitDimension.Size = new System.Drawing.Size(121, 21);
@@ -116,12 +115,12 @@ namespace Envision
             // kryptonPanel1
             // 
             this.kryptonPanel1.Controls.Add(this.approxSize);
-            this.kryptonPanel1.Controls.Add(this.label3);
             this.kryptonPanel1.Controls.Add(this.retainSize);
             this.kryptonPanel1.Controls.Add(this.qualitypercent);
             this.kryptonPanel1.Controls.Add(this.label2);
             this.kryptonPanel1.Controls.Add(this.imgQuality);
             this.kryptonPanel1.Controls.Add(this.label1);
+            this.kryptonPanel1.Controls.Add(this.label3);
             this.kryptonPanel1.Location = new System.Drawing.Point(3, 2);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.HeaderCalendar;
@@ -133,22 +132,11 @@ namespace Envision
             this.approxSize.BackColor = System.Drawing.Color.Transparent;
             this.approxSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.approxSize.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.approxSize.Location = new System.Drawing.Point(126, 166);
+            this.approxSize.Location = new System.Drawing.Point(163, 170);
             this.approxSize.Name = "approxSize";
-            this.approxSize.Size = new System.Drawing.Size(378, 39);
+            this.approxSize.Size = new System.Drawing.Size(341, 39);
             this.approxSize.TabIndex = 10;
             this.approxSize.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label3.Location = new System.Drawing.Point(20, 170);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(111, 39);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Approx Filesize:\r\n(based on quality)";
             // 
             // retainSize
             // 
@@ -170,7 +158,7 @@ namespace Envision
             this.qualitypercent.BackColor = System.Drawing.Color.Transparent;
             this.qualitypercent.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.qualitypercent.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.qualitypercent.Location = new System.Drawing.Point(20, 148);
+            this.qualitypercent.Location = new System.Drawing.Point(20, 145);
             this.qualitypercent.Name = "qualitypercent";
             this.qualitypercent.Size = new System.Drawing.Size(484, 18);
             this.qualitypercent.TabIndex = 8;
@@ -221,6 +209,18 @@ namespace Envision
             this.label1.Size = new System.Drawing.Size(91, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "Image Size";
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label3.Location = new System.Drawing.Point(3, 170);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(154, 39);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Approx Filesizes:\r\n(based on quality only)";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // BatchSettings
             // 
