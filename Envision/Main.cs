@@ -12,6 +12,8 @@ namespace Envision
 {
     public partial class Main : ComponentFactory.Krypton.Toolkit.KryptonForm
     {
+        private List<string> importPaths;
+
         public Main()
         {
             InitializeComponent();
@@ -33,6 +35,7 @@ namespace Envision
             string path = getFolderPath("Please select a folder containing images:");
             if (path != null)
             {
+                this.importPaths.Add(path);
                 string[] extenstions = { "*.jpg", "*.jpeg", "*.jfif", "*.png" };
                 foreach (string ext in extenstions)
                 {
@@ -59,7 +62,11 @@ namespace Envision
         private void exportImages()
         {
             string path = getFolderPath("Please select a destination folder for the images:");
-            if (path != null)
+            if (importPaths.Contains(path))
+            {
+                MessageBox.Show(this, "Oops! You selected the same folder for the exported images as for the imported images. The folders must be different.", "Error - Folder Path Conflict");
+            }
+            else if (path != null)
             {
                 BatchSettings settings = new BatchSettings(calcAvgFileSize(), imageList.Items, path);
                 DialogResult result = settings.ShowDialog(this);
